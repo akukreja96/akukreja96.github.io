@@ -1,0 +1,251 @@
+/* ===================================================================
+   akukreja96.github.io — shared stylesheet
+
+   Plain CSS. No build step, no dependencies. Edit this file directly
+   and the change is live as soon as you push.
+
+   Colour is defined once as custom properties on :root, then
+   redefined for dark mode. If you want to restyle the whole site,
+   change the values in these two blocks and nothing else.
+   =================================================================== */
+
+:root {
+  --bg:        #ffffff;
+  --surface:   #f5f7f9;
+  --text:      #16191c;
+  --muted:     #565e66;
+  --faint:     #868e96;
+  --rule:      #e2e6ea;
+  --accent:    #2a5d7c;
+  --ph-bg:     #fff4d4;
+  --ph-text:   #6b4e00;
+  --ph-rule:   #d9a300;
+  --measure:   46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:      #131619;
+    --surface: #1b1f23;
+    --text:    #e6e9ec;
+    --muted:   #a2aab2;
+    --faint:   #737b83;
+    --rule:    #292f35;
+    --accent:  #8cb8dc;
+    --ph-bg:   #4a3a0c;
+    --ph-text: #ffe08a;
+    --ph-rule: #b98a00;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.25rem 4rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: var(--measure); margin: 0 auto; }
+
+/* ---------- links ---------- */
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* ---------- site navigation ---------- */
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  align-items: baseline;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem;
+}
+.site-nav a { color: var(--muted); text-decoration: none; }
+.site-nav a:hover { color: var(--accent); text-decoration: underline; }
+.site-nav a[aria-current="page"] { color: var(--text); font-weight: 600; }
+.site-nav .spacer { margin-left: auto; }
+
+/* ---------- headings ---------- */
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem;
+}
+
+h2 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3 { font-size: 1.02rem; margin: 0; font-weight: 650; }
+
+p { margin: 0 0 1rem; }
+
+.lede { font-size: 1.08rem; color: var(--muted); }
+
+/* ---------- résumé header ---------- */
+
+.masthead { margin-bottom: 0.5rem; }
+
+.tagline {
+  margin: 0 0 0.9rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.contact li { display: flex; align-items: center; gap: 0.4rem; }
+
+/* ---------- résumé entries ---------- */
+
+.entry { margin-bottom: 1.75rem; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.15rem 1rem;
+}
+
+.entry-meta {
+  font-size: 0.85rem;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.entry-sub {
+  margin: 0.1rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.entry ul { margin: 0.5rem 0 0; padding-left: 1.15rem; }
+.entry li { margin-bottom: 0.35rem; }
+.entry li::marker { color: var(--faint); }
+
+/* ---------- skills ---------- */
+
+.skills { margin: 0; }
+.skills dt {
+  font-weight: 650;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-top: 0.9rem;
+}
+.skills dt:first-child { margin-top: 0; }
+.skills dd { margin: 0.2rem 0 0; }
+
+/* ---------- placeholders ------------------------------------------
+   Anything still unfilled is highlighted so it is impossible to miss
+   on screen or in print. Replace the text AND remove the <span>
+   wrapper as you go; when no .ph remains, the page is done.
+   ------------------------------------------------------------------ */
+
+.ph {
+  background: var(--ph-bg);
+  color: var(--ph-text);
+  box-shadow: inset 0 -1px 0 var(--ph-rule);
+  padding: 0 0.25em;
+  border-radius: 2px;
+  font-style: normal;
+}
+
+.draft-banner {
+  background: var(--ph-bg);
+  color: var(--ph-text);
+  border: 1px solid var(--ph-rule);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.draft-banner strong { font-weight: 700; }
+.draft-banner code {
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.92em;
+}
+
+/* ---------- actions ---------- */
+
+.actions { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+
+.btn {
+  display: inline-block;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+
+.site-footer {
+  margin-top: 3rem;
+  font-size: 0.82rem;
+  color: var(--faint);
+}
+
+/* ---------- print / save-as-PDF -----------------------------------
+   A résumé gets printed. These rules give it tight margins, black
+   text on white, and stop an entry from splitting across two pages.
+   The draft banner is deliberately NOT hidden — better to notice a
+   placeholder on the printed page than to email it to someone.
+   ------------------------------------------------------------------ */
+
+@media print {
+  :root {
+    --bg: #fff; --surface: #fff; --text: #000; --muted: #333;
+    --faint: #555; --rule: #bbb; --accent: #000;
+  }
+  @page { margin: 14mm; }
+  body { padding: 0; font-size: 10.5pt; line-height: 1.45; }
+  .wrap { max-width: none; }
+  .site-nav, .actions { display: none; }
+  a { text-decoration: none; }
+  h1 { font-size: 19pt; }
+  h2 { margin: 1.3rem 0 0.6rem; font-size: 9pt; }
+  .entry, .masthead { page-break-inside: avoid; break-inside: avoid; }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  .site-footer { color: #666; }
+}
