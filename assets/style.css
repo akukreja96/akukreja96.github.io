@@ -17,9 +17,6 @@
   --faint:     #868e96;
   --rule:      #e2e6ea;
   --accent:    #2a5d7c;
-  --ph-bg:     #fff4d4;
-  --ph-text:   #6b4e00;
-  --ph-rule:   #d9a300;
   --measure:   46rem;
 }
 
@@ -32,9 +29,6 @@
     --faint:   #737b83;
     --rule:    #292f35;
     --accent:  #8cb8dc;
-    --ph-bg:   #4a3a0c;
-    --ph-text: #ffe08a;
-    --ph-rule: #b98a00;
   }
 }
 
@@ -169,37 +163,41 @@ p { margin: 0 0 1rem; }
 .skills dt:first-child { margin-top: 0; }
 .skills dd { margin: 0.2rem 0 0; }
 
-/* ---------- placeholders ------------------------------------------
-   Anything still unfilled is highlighted so it is impossible to miss
-   on screen or in print. Replace the text AND remove the <span>
-   wrapper as you go; when no .ph remains, the page is done.
-   ------------------------------------------------------------------ */
+/* ---------- competency groups ---------- */
 
-.ph {
-  background: var(--ph-bg);
-  color: var(--ph-text);
-  box-shadow: inset 0 -1px 0 var(--ph-rule);
-  padding: 0 0.25em;
-  border-radius: 2px;
-  font-style: normal;
+.group { margin-bottom: 1.75rem; }
+.group:last-child { margin-bottom: 0; }
+.group > h3 { font-size: 1rem; }
+
+.group-note {
+  margin: 0.15rem 0 0.6rem;
+  color: var(--faint);
+  font-size: 0.87rem;
 }
 
-.draft-banner {
-  background: var(--ph-bg);
-  color: var(--ph-text);
-  border: 1px solid var(--ph-rule);
-  border-radius: 6px;
-  padding: 0.85rem 1rem;
-  margin-bottom: 2rem;
+/* ---------- credentials (certifications, registrations) ---------- */
+
+.creds { list-style: none; margin: 0; padding: 0; }
+
+.creds li {
+  display: flex;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.creds li:last-child { border-bottom: 0; }
+
+.creds .yr {
+  flex: 0 0 2.9rem;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
   font-size: 0.9rem;
-  line-height: 1.5;
 }
-.draft-banner strong { font-weight: 700; }
-.draft-banner code {
-  background: rgba(0, 0, 0, 0.08);
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
-  font-size: 0.92em;
+
+.creds .issuer {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 /* ---------- actions ---------- */
@@ -238,14 +236,33 @@ p { margin: 0 0 1rem; }
     --bg: #fff; --surface: #fff; --text: #000; --muted: #333;
     --faint: #555; --rule: #bbb; --accent: #000;
   }
-  @page { margin: 14mm; }
-  body { padding: 0; font-size: 10.5pt; line-height: 1.45; }
+  @page { size: A4; margin: 11mm 12mm; }
+  body { padding: 0; font-size: 9.2pt; line-height: 1.3; }
   .wrap { max-width: none; }
   .site-nav, .actions { display: none; }
   a { text-decoration: none; }
-  h1 { font-size: 19pt; }
-  h2 { margin: 1.3rem 0 0.6rem; font-size: 9pt; }
-  .entry, .masthead { page-break-inside: avoid; break-inside: avoid; }
-  h2 { page-break-after: avoid; break-after: avoid; }
-  .site-footer { color: #666; }
+
+  /* tighter vertical rhythm: the screen page breathes, the printed one
+     should fit the same content the source PDF fits in two sides */
+  h1 { font-size: 17pt; margin-bottom: 0.15rem; }
+  h2 { margin: 0.85rem 0 0.4rem; font-size: 8.4pt; padding-bottom: 0.2rem; }
+  h3 { font-size: 9.6pt; }
+  p { margin-bottom: 0.45rem; }
+  .tagline { font-size: 10pt; margin-bottom: 0.35rem; }
+  .contact { font-size: 8.6pt; gap: 0.2rem 0.8rem; }
+  .entry { margin-bottom: 0.7rem; }
+  .entry-sub { margin: 0.05rem 0 0.25rem; font-size: 8.8pt; }
+  .entry-meta { font-size: 8.4pt; }
+  .entry ul { margin-top: 0.25rem; }
+  .entry li { margin-bottom: 0.12rem; }
+  .group { margin-bottom: 0.7rem; }
+  .group-note { margin: 0.05rem 0 0.3rem; font-size: 8.4pt; }
+  .skills dt { margin-top: 0.4rem; font-size: 8.2pt; }
+  .creds li { padding: 0.28rem 0; }
+  .creds .issuer { font-size: 8.4pt; }
+  .site-footer { margin-top: 1rem; color: #666; font-size: 8pt; }
+
+  /* never split an entry, and never strand a heading at a page foot */
+  .entry, .masthead, .group, .creds li { page-break-inside: avoid; break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; break-after: avoid; }
 }
